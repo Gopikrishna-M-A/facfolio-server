@@ -40,6 +40,10 @@ const projectSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  isVisible: {
+    type: Boolean,
+    default: true,
+  }
 });
 
 

@@ -1,38 +1,67 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const aboutSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   userTag: {
     type: String,
     required: true,
+    default: "webdeveloper123", // Default user tag
   },
-  quote: String,
-  linkedinurl: String,
-  twitterurl: String,
-  githuburl: String,
+  quote: {
+    type: String,
+    default: "Passionate about crafting clean and efficient code.",
+  },
+  linkedinurl: {
+    type: String,
+    default: "https://www.linkedin.com/in/",
+  },
+  twitterurl: {
+    type: String,
+    default: "https://twitter.com/",
+  },
+  githuburl: {
+    type: String,
+    default: "https://github.com/",
+  },
   interest: {
     type: [String],
-    default: [],
+    default: ["Web Development", "Machine Learning"],
   },
   responsibilities: {
     type: [String],
-    default: [],
+    default: ["Front-end Development", "Code Review"],
   },
   education: {
     type: [
       {
-        degree: String,
-        school: String,
-        year: Number,
+        degree: { type: String },
+        school: { type: String },
+        year: { type: Number },
       },
-    ]
+    ],
+    default: [
+      {
+        degree: "Master of Science",
+        school: "Tech University",
+        year: 2022,
+      },
+      {
+        degree: "Bachelor of Arts",
+        school: "Arts College",
+        year: 2018,
+      },
+    ],
   },
   expertise: {
     type: [String],
-    default: [],
-  }
-})
+    default: ["React", "Node.js", "Python"],
+  },
+  isVisible: {
+    type: Boolean,
+    default: true,
+  },
+});
 
-const About = mongoose.model("About", aboutSchema)
+const About = mongoose.model("About", aboutSchema);
 
-export default About
+export default About;

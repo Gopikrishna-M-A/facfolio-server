@@ -9,7 +9,12 @@ const blogSchema = new mongoose.Schema({
       required: true
     },
     para: String,
-    link: String
+    link: String,
+    isVisible: {
+    type: Boolean,
+    default: true,
+  }
+    
   });
 const Blog = mongoose.model("Blog", blogSchema);
 

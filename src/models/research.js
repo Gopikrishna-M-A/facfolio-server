@@ -10,7 +10,11 @@ const researchSchema = new mongoose.Schema({
     para: String,
     point1: String,
     point2: String,
-    point3: String
+    point3: String,
+    isVisible: {
+      type: Boolean,
+      default: true,
+    }
   });
 
 
