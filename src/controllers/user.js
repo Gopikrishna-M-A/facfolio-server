@@ -105,9 +105,13 @@ export const getInfo = async (req, res) => {
     // Fetch additional data from related models
     const home = await Home.findOne({ user: user._id });
     const about = await About.findOne({ user: user._id });
-    const research = await Research.find({ user: user._id });
-    const project = await Project.find({ user: user._id });
-    const blog = await Blog.find({ user: user._id });
+
+    // const research = await Research.find({ user: user._id });
+    // const project = await Project.find({ user: user._id });
+    // const blog = await Blog.find({ user: user._id });
+    const research = await Research.find({ user: user._id, isVisible: true });
+    const project = await Project.find({ user: user._id, isVisible: true });
+    const blog = await Blog.find({ user: user._id, isVisible: true });
 
     // Combine user details and related model data
     const userData = {
